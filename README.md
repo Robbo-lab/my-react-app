@@ -50,3 +50,5 @@ my-react-app/
 ```
 
 This structure provides a balance between simplicity and scalability, allowing the project to grow without becoming disorganized.
+
+[Link Text](/dist)
