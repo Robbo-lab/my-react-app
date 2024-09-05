@@ -7,7 +7,7 @@ function Header() {
       <header className="navbar is-primary">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            My React App
+            My React Application
           </a>
         </div>
       </header>
