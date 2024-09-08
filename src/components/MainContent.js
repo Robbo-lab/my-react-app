@@ -4,6 +4,7 @@ import ItemList from "./ItemList";
 import Lifecycle from "./LifeCycle";
 import StyledComponent from "./StyledComponent";
 import UserProfile from "./UserProfile";
+import AvatarOne from "../assets/images/avatar_1.png";
 
 function MainContent() {
   // Store the date in a global variable (if needed)
@@ -30,6 +31,7 @@ function MainContent() {
             <UserProfile
               firstName="John"
               lastName="Doe"
+              imageUrl={AvatarOne}
               age={30}
               isStudent={false}
               skills={["JavaScript", "React", "CSS"]}

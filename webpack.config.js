@@ -20,6 +20,10 @@ module.exports = {
         test: /\.css$/i, // Regular expression to match .css files
         use: ["style-loader", "css-loader"], // Loaders to use
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: "asset/resource", // This tells Webpack to handle these files as separate assets.
+      },
     ],
   },
   plugins: [
