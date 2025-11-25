@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "lint": "eslint ."
   },
-  "homepage": "https://<your-github-username>.github.io/<repository-name>",
+  "homepage": "https://<username>.github.io/<repo>",
   "keywords": [],
   "author": "",
   "license": "ISC",
