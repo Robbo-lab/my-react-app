@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import ApodPage from "./pages/ApodPage";
-import Accordion from "./components/Accordian";
-import Gallery from "./components/Gallery";
-import GalleryItem from "./components/GalleryItem";
-import PeopleList from "./components/PeopleList";
-import StyledComponent from "./components/StyledComponent";
+import ApodPage from "./pages/ApodPage.js";
+import Accordion from "./components/Accordian.js";
+import Gallery from "./components/Gallery.js";
+import GalleryItem from "./components/GalleryItem.js";
+import PeopleList from "./components/PeopleList.js";
+import StyledComponent from "./components/StyledComponent.js";
 import "bulma/css/bulma.min.css";
 import "./App.css";
 
