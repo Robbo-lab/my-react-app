@@ -10,7 +10,7 @@
     "deploy": "gh-pages -d dist",
     "lint": "eslint ."
   },
-  "homepage": "https://<username>.github.io/<repo>",
+  "homepage": "https://robbo-lab.github.io/my-react-app/",
   "keywords": [],
   "author": "",
   "license": "ISC",

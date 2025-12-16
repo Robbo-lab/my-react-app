@@ -1,4 +1,3 @@
-
 name: Deploy React App to GitHub Pages
 
 on:
@@ -21,7 +20,7 @@ concurrency:
 
 env:
   # Set to your repository name if deploying to a project page: username.github.io/<repo>
-  REPO_NAME: "<repository-name>"
+  REPO_NAME: "my-react-app"
   BUILD_DIR: "dist"
 
 jobs:
