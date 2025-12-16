@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ApodForm from "../components/ApodForm";
-import ApodContent from "../components/ApodContent";
+import ApodForm from "../components/ApodForm.js";
+import ApodContent from "../components/ApodContent.js";
 import "../App.css";
-import { buildApiUrl } from "../utilities/apiUrl";
+import { buildApiUrl } from "../utilities/apiUrl.js";
 
 export default function ApodPage() {
   const [apodData, setApodData] = useState(null);
