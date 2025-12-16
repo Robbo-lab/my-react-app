@@ -37,7 +37,7 @@ const App = () => {
             <Link className="button is-link is-normal m-1" to="/gallery/1">
               Gallery Item
             </Link>
-            <Link className="button is-link is-normal mr-1" to="/people">
+            <Link className="button is-link is-normal m-1" to="/people">
               People List
             </Link>
 

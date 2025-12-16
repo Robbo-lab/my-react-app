@@ -1,4 +1,4 @@
-
+/* eslint-env node */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -7,10 +7,10 @@ const publicUrl = process.env.PUBLIC_URL || "/";
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "[name].[contenthash].js",            // better caching
+    filename: "[name].[contenthash].js", // better caching
     path: path.resolve(__dirname, "dist"),
-    clean: true,                                     // clean dist on build
-    publicPath: publicUrl                            // critical for GH Pages
+    clean: true, // clean dist on build
+    publicPath: publicUrl, // critical for GH Pages
   },
   module: {
     rules: [
@@ -43,7 +43,6 @@ module.exports = {
     historyApiFallback: true, // helps SPA routing in dev
   },
 };
-
 
 // Then run this
 // npm install --save-dev style-loader css-loader

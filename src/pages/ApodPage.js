@@ -11,7 +11,6 @@ export default function ApodPage() {
   const fetchApodData = async (parameters) => {
     // Step 2 Reset the state before every api call
     setApodData(null);
-    setError("");
 
     const apiUrl = buildApiUrl(parameters);
 
