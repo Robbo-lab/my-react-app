@@ -13,7 +13,7 @@ cd my-react-app
 
 ### 2. **Initialise a New npm Project**
 
-Initialise a new npm project with:
+Initialise a new npm project with
 
 ```bash
 npm init -y. #or npm init for a manual
@@ -59,7 +59,8 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true, // cleans up the /dist folder before build
+    publicPath: "/",
+    clean: true,
   },
   module: {
     rules: [
@@ -78,11 +79,19 @@ module.exports = {
     }),
   ],
   devServer: {
+    port: 3000,
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, "public"),
     },
     compress: true,
-    port: 3000,
+
+    // This is an example of how to set headers if you run into any issue with security in browser (i.e Tafe computers)
+    // headers: {
+    //   "Content-Security-Policy":
+    //     "default-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-eval'; connect-src 'self' http://localhost:3000 https://api.nasa.gov; img-src 'self' https://apod.nasa.gov;",
+    // },
+
+    historyApiFallback: true,
   },
 };
 ```
