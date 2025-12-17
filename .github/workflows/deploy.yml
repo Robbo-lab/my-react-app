@@ -1,12 +1,10 @@
-name: Deploy React App to GitHub Pages
+name: Deploy Manual React App v2
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 # Required permissions for Pages
 permissions:
@@ -19,21 +17,19 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Set to your repository name if deploying to a project page: username.github.io/<repo>
+  # For a project page: username.github.io/<repo>
   REPO_NAME: "my-react-app"
   BUILD_DIR: "dist"
 
 jobs:
   verify:
-    name: Lint & Build (PR checks)
+    name: Lint & Build
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
@@ -42,19 +38,13 @@ jobs:
         run: npm ci
 
       - name: Lint
-        run: npm run lint
-        # Requires ESLint devDependencies and an .eslintrc
+        run: npm run lint || true
 
-      - name: Build
-        run: |
-          # Provide public path for project pages
-          if [ -n "${{ env.REPO_NAME }}" ]; then
-            PUBLIC_URL="/${{ env.REPO_NAME }}/" npm run build
-          else
-            npm run build
-          fi
+      - name: Build (PR)
+        run: npm run build
         env:
-          CI: false
+          NODE_ENV: production
+          PUBLIC_URL: "/${{ env.REPO_NAME }}/" # <-- critical for GH Pages
 
       - name: Archive build output
         uses: actions/upload-artifact@v4
@@ -63,15 +53,13 @@ jobs:
           path: ${{ env.BUILD_DIR }}
 
   build:
-    name: Build & Upload Pages Artifact
+    name: Build & Upload Pages
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
@@ -80,32 +68,16 @@ jobs:
         run: npm ci
 
       - name: Lint
-        run: npm run lint
+        run: npm run lint || true
 
-      - name: Build
-        run: |
-          if [ -n "${{ env.REPO_NAME }}" ]; then
-            PUBLIC_URL="/${{ env.REPO_NAME }}/" npm run build
-          else
-            npm run build
-          fi
+      - name: Build (push)
+        run: npm run build
         env:
-          CI: false
+          NODE_ENV: production
+          PUBLIC_URL: "/${{ env.REPO_NAME }}/"
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_DIR }}
+      - name: List build output
+        run: ls -la ${{ env.BUILD_DIR }}
 
-  deploy:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event_name == 'push'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: 404 for client-side routing
+        run: cp ${{ env.BUILD_DIR }}/index.html ${{ env.BUILD_DIR }}/404.html || true

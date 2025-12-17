@@ -1,7 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const publicUrl = process.env.PUBLIC_URL || "/";
+const isProd = process.env.NODE_ENV === "production";
+
+// For project pages: '/my-react-app/'
+// For user/org pages: '/' (root)
+const publicUrl = process.env.PUBLIC_URL ?? (isProd ? "/my-react-app/" : "/");
 
 module.exports = {
   entry: "./src/index.js",
@@ -39,7 +43,7 @@ module.exports = {
     },
     compress: true,
     port: 3000,
-    historyApiFallback: true, // helps SPA routing in dev
+    historyApiFallback: true,
   },
 };
 
