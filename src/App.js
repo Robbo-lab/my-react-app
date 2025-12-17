@@ -11,7 +11,9 @@ import "./App.css";
 
 const App = () => {
   return (
-    <Router>
+    // Github pages Dev
+    <Router basename="/my-react-app">
+      {/* <Router basename="/"> */}
       <section className="hero is-fullheight is-primary">
         <div className="hero-body">
           <div className="container has-text-centered">
