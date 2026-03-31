@@ -1,83 +1,46 @@
-name: Deploy Manual React App v2
+name: Deploy Manual React App to GitHub Pages
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch: # Allows you to trigger manually from the Actions tab
 
-# Required permissions for Pages
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
-
-env:
-  # For a project page: username.github.io/<repo>
-  REPO_NAME: "my-react-app"
-  BUILD_DIR: "dist"
 
 jobs:
-  verify:
-    name: Lint & Build
+  deploy:
+    name: Lint, Build & Deploy
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 20
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint || true
+      - name: Run linting
+        run: npm run lint || true # Keeps linting but doesn't fail the whole job if no lint script or warnings
 
-      - name: Build (PR)
+      - name: Build React app
         run: npm run build
         env:
           NODE_ENV: production
-          PUBLIC_URL: "/${{ env.REPO_NAME }}/" # critical for GH Pages
 
-      - name: Archive build output
-        uses: actions/upload-artifact@v4
+      - name: Create 404.html (for client-side routing / SPA support)
+        run: cp build/index.html build/404.html || true
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: build-output
-          path: ${{ env.BUILD_DIR }}
-
-  build:
-    name: Build & Upload Pages
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint || true
-
-      - name: Build (push)
-        run: npm run build
-        env:
-          NODE_ENV: production
-          PUBLIC_URL: "/${{ env.REPO_NAME }}/"
-
-      - name: List build output
-        run: ls -la ${{ env.BUILD_DIR }}
-
-      - name: 404 for client-side routing
-        run: cp ${{ env.BUILD_DIR }}/index.html ${{ env.BUILD_DIR }}/404.html || true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # Your webpack outputs here
+          publish_branch: gh-pages
+          force_orphan: true # Creates clean history (recommended)

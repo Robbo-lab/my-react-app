@@ -11,7 +11,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "[name].[contenthash].js", // better caching
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     clean: true, // clean dist on build
     publicPath: publicUrl, // critical for GH Pages
   },
@@ -39,7 +39,7 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, "build"),
     },
     compress: true,
     port: 3000,
@@ -51,4 +51,4 @@ module.exports = {
 // npm install --save-dev style-loader css-loader
 // npm run build
 // npm start
-// Check dist folder
+// Check build folder
