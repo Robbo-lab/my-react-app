@@ -28,7 +28,7 @@ This will create a `package.json` file with default settings.
 Install React and ReactDOM as dependencies:
 
 ```bash
-npm install react@latest react-dom@latest
+npm install react@19.2.0 react-dom@l19.2.0
 ```
 
 ### 4. **Set Up a Build Tool**
@@ -54,22 +54,32 @@ Create a file named `webpack.config.js` in the root of your project with the fol
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const isProd = process.env.NODE_ENV === "production";
+const publicUrl = process.env.PUBLIC_URL ?? (isProd ? "/my-react-app/" : "/");
+
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
+    filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "build"),
     clean: true,
+    // For GH Pages
+    publicPath: publicUrl,
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: { loader: "babel-loader" },
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: "asset/resource",
       },
     ],
   },
@@ -79,18 +89,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3000,
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, "build"),
     },
     compress: true,
-
-    // This is an example of how to set headers if you run into any issue with security in browser (i.e Tafe computers)
-    // headers: {
-    //   "Content-Security-Policy":
-    //     "default-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-eval'; connect-src 'self' http://localhost:3000 https://api.nasa.gov; img-src 'self' https://apod.nasa.gov;",
-    // },
-
+    port: 3000,
     historyApiFallback: true,
   },
 };
