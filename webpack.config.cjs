@@ -2,18 +2,16 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const isProd = process.env.NODE_ENV === "production";
-
-// For project pages: '/my-react-app/'
-// For user/org pages: '/' (root)
 const publicUrl = process.env.PUBLIC_URL ?? (isProd ? "/my-react-app/" : "/");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "[name].[contenthash].js", // better caching
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "build"),
-    clean: true, // clean dist on build
-    publicPath: publicUrl, // critical for GH Pages
+    clean: true,
+    // For GH Pages
+    publicPath: publicUrl,
   },
   module: {
     rules: [
@@ -46,9 +44,3 @@ module.exports = {
     historyApiFallback: true,
   },
 };
-
-// Then run this
-// npm install --save-dev style-loader css-loader
-// npm run build
-// npm start
-// Check build folder

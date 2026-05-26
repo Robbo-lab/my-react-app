@@ -1,3 +1,13 @@
+## Setup
+
+```bash
+// npm install --save-dev style-loader css-loader
+// npm run build
+// npm start
+```
+
+Check build folder
+
 ### 1. Root Directory
 
 - **`public/`**: Contains static assets like the `index.html` file, favicon, images, and any other static resources. The `index.html` is the entry point for the application.

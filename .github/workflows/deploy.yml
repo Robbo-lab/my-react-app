@@ -3,7 +3,7 @@ name: Deploy Manual React App to GitHub Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch: # Allows you to trigger manually from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Run linting
-        run: npm run lint || true # Keeps linting but doesn't fail the whole job if no lint script or warnings
+        run: npm run lint || true
 
       - name: Build React app
         run: npm run build
@@ -41,6 +41,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build # Your webpack outputs here
+          publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true # Creates clean history (recommended)
