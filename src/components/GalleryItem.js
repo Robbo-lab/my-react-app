@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { sculptureList } from "../data/list.js";
+import { sculptureList } from "../data/sculptures.js";
 
 const GalleryItem = () => {
   // get the param from the url

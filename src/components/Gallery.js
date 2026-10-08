@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { sculptureList } from "../data/list.js";
+import { sculptureList } from "../data/sculptures.js";
 
 const Gallery = () => {
   const [index, setIndex] = useState(0);

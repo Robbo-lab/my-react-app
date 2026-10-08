@@ -1,19 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import ApodPage from "./pages/ApodPage.js";
-import Accordion from "./components/Accordian.js";
-import Gallery from "./components/Gallery.js";
-import GalleryItem from "./components/GalleryItem.js";
-import PeopleList from "./components/PeopleList.js";
-import StyledComponent from "./components/StyledComponent.js";
+import ApodPage from "./pages/ApodPage";
+import Accordion from "./components/Accordian";
+import Gallery from "./components/Gallery";
+import GalleryItem from "./components/GalleryItem";
+import PeopleList from "./components/PeopleList";
+import StyledComponent from "./components/StyledComponent";
+import UserProfile from "./components/UserProfile";
+
+import { user } from "./data/users.js";
+
 import "bulma/css/bulma.min.css";
 import "./App.css";
+import "./assets/styles.css";
 
 const App = () => {
   return (
     // Github pages Dev
-    <Router basename="/my-react-app">
-      {/* <Router basename="/"> */}
+    // <Router basename="/my-react-app">
+    <Router basename="/">
       <section className="hero is-fullheight is-primary">
         <div className="hero-body">
           <div className="container has-text-centered">
@@ -42,6 +47,9 @@ const App = () => {
             <Link className="button is-link is-normal m-1" to="/people">
               People List
             </Link>
+            <Link className="button is-link is-normal m-1" to="/users">
+              User Profile
+            </Link>
 
             {/* Routing Setup */}
             <Routes>
@@ -51,6 +59,7 @@ const App = () => {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/gallery/:id" element={<GalleryItem />} />
               <Route path="/people" element={<PeopleList />} />
+              <Route path="/users" element={<UserProfile user={user} />} />
             </Routes>
           </div>
         </div>
