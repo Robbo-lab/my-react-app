@@ -4,7 +4,7 @@ import { people } from "../data/people.js";
 export default function PeopleList() {
   return (
     <div className="box mt-3">
-      <h2 className="title is-4">People List</h2>
+      <h2 className="title is-4 has-text-light">People List</h2>
       <ul>
         {people.map((person) => (
           <li key={person.id}>

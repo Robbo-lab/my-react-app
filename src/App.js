@@ -33,12 +33,12 @@ const App = () => {
             </div>
 
             <div className="columns is-multiline is-centered">
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link className="button is-link is-fullwidth is-medium" to="/">
                   Home
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/nasa-api"
@@ -46,15 +46,15 @@ const App = () => {
                   NASA API
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/styled"
                 >
-                  Styled Component
+                  Styled
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/accordion"
@@ -62,7 +62,7 @@ const App = () => {
                   Accordion
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/gallery"
@@ -70,7 +70,7 @@ const App = () => {
                   Gallery
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/gallery/1"
@@ -78,7 +78,7 @@ const App = () => {
                   Gallery Item
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/people"
@@ -86,7 +86,7 @@ const App = () => {
                   People List
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/users"
@@ -94,7 +94,7 @@ const App = () => {
                   User Profile
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/shared-state"
@@ -102,12 +102,12 @@ const App = () => {
                   Shared State
                 </Link>
               </div>
-              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+              <div className="column is-12-mobile is-6-tablet is-2-desktop">
                 <Link
                   className="button is-link is-fullwidth is-medium"
                   to="/likes"
                 >
-                  State & useEffect
+                  useEffect
                 </Link>
               </div>
             </div>

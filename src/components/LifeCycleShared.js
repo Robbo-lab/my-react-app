@@ -53,8 +53,6 @@ function CounterControls({ count, onIncrement, onDecrement }) {
   return (
     <div className="card">
       <div className="card-content has-text-centered">
-        <p className="title is-5">Controls</p>
-
         <div className="buttons is-centered">
           <button
             className="button is-danger"
@@ -63,13 +61,12 @@ function CounterControls({ count, onIncrement, onDecrement }) {
           >
             −
           </button>
-
           <button className="button is-success" onClick={onIncrement}>
             +
           </button>
         </div>
 
-        <div className="notification is-light mt-4">
+        <div className="notification is-info mt-4">
           Shared Count: <strong>{count}</strong>
         </div>
       </div>
@@ -83,7 +80,7 @@ function CounterLogger({ count }) {
   }, [count]);
 
   return (
-    <div className="notification is-info is-light mt-5">
+    <div className="notification is-info is-dark mt-5">
       <strong>CounterLogger</strong> is listening for state changes. Open the
       browser console to see the useEffect logs.
     </div>

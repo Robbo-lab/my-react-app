@@ -20,8 +20,7 @@ function UserProfile(props) {
   const formattedSkills = formatSkills(user.skills);
 
   // Step 4 destructure props at the top of the component
-  // console.log("Before destructure", props);
-  const { firstName, lastName, age, isStudent, skills, changeAge } = props.user;
+  const { firstName, age } = props.user;
 
   console.log(props);
 
@@ -34,7 +33,7 @@ function UserProfile(props) {
   return (
     <div className="container mt-5">
       <div className="card">
-        <header className="card-header has-background-primary">
+        <header className="card-header has-background-secondary">
           <h1 className="card-header-title has-text-white">User Profile</h1>
         </header>
         <div className="card-content">

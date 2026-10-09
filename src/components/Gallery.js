@@ -13,13 +13,13 @@ const Gallery = () => {
   return (
     <div className="box mt-3">
       {/* <Header title="New Gallery" /> */}
-      <button className="button is-primary" onClick={handleClick}>
+      <button className="button mb-1 is-primary" onClick={handleClick}>
         Next
       </button>
-      <h2 className="title is-5">
+      <h2 className="title is-5 has-text-light">
         <i>{sculpture.name}</i> by {sculpture.artist}
       </h2>
-      <h3 className="subtitle is-6">
+      <h3 className="subtitle is-6 has-text-light">
         ({index + 1} of {sculptureList.length})
       </h3>
       <img src={sculpture.url} alt={sculpture.alt} />

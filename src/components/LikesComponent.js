@@ -1,43 +1,47 @@
 import React, { useState, useEffect } from "react";
 
 export default function LikesComponent() {
-  console.log("Like Component Connected");
-  const [likes, setLikes] = useState();
-  const [dislikes, setDisLikes] = useState();
-
-  const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
+  const [likes, setLikes] = useState(0);
+  const [dislikes, setDisLikes] = useState(0);
+  const [like, setLike] = useState(null);
 
   function Header() {
     return <h2 className="title is-2">Header</h2>;
   }
 
   function AlertMessage({ like }) {
-    return !like ? (
-      <div></div>
-    ) : like == 1 ? (
-      <div className="notification is-success">You recieved a like</div>
+    if (like === null) return null;
+
+    return like === 1 ? (
+      <div className="notification is-success has-text-black has-text-centered">
+        You received a like
+      </div>
     ) : (
-      <div className="notification is-danger">You recieved a dislike</div>
+      <div className="notification is-danger has-text-black has-text-centered">
+        You received a dislike
+      </div>
     );
   }
 
   function handleLikeClick() {
-    !likes ? setLikes(1) : setLikes(likes + 1);
+    likes == 0 ? setLikes(1) : setLikes(likes + 1);
   }
-
-  useEffect(() => {
-    <AlertMessage like={1} />;
-  }, [likes]);
 
   function handleDisLikeClick() {
-    !dislikes ? setDisLikes(1) : setDisLikes(dislikes + 1);
+    dislikes == 0 ? setDisLikes(1) : setDisLikes(dislikes + 1);
   }
 
   useEffect(() => {
-    <AlertMessage like={0} />;
-  }, [dislikes]);
+    if (likes > 0) {
+      setLike(1);
+    }
+  }, [likes]);
 
-  console.log(likes);
+  useEffect(() => {
+    if (dislikes > 0) {
+      setLike(0);
+    }
+  }, [dislikes]);
 
   return (
     <>
@@ -45,32 +49,23 @@ export default function LikesComponent() {
         <div className="container">
           <Header />
           <div className="box has-text-centered">
-            <div className="content">
-              <ul>
-                {names.map((name) => (
-                  <li key={name}>
-                    <span className="tag is-primary is-medium">{name}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
             <div className="buttons is-centered mt-4">
               <button className="button is-success" onClick={handleLikeClick}>
-                Like
+                Like: {likes}
               </button>
               <button className="button is-danger" onClick={handleDisLikeClick}>
-                Dislike
+                Dislike: {dislikes}
               </button>
             </div>
           </div>
         </div>
-      </section>
-      <section className="section pt-0">
-        <div className="container">
-          <div className="notification is-info is-light has-text-centered">
-            <AlertMessage />
-          </div>
-        </div>
+        {/* <section className="section pt-0"> */}
+        {/* <div className="box is-info has-text-centered"> */}
+        {/* <div className="notification is-info has-text-centered"> */}
+        <AlertMessage like={like} />
+        {/* </div> */}
+        {/* </div> */}
+        {/* </section> */}
       </section>
     </>
   );

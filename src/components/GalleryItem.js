@@ -32,16 +32,17 @@ const GalleryItem = () => {
     <div className="box mt-3">
       {item ? (
         <>
-          <h2 className="title is-5">
-            <i>{item.art.name}</i> by {item.art.artist}
-          </h2>
           <Link
-            className="button is-info is-normal m-1"
+            className="button is-info is-normal mb-1"
             to={`/gallery/${item.next}`}
           >
             Next
-          </Link>
-          <h3 className="subtitle is-6">
+          </Link>{" "}
+          m
+          <h2 className="title is-5 has-text-light">
+            <i>{item.art.name}</i> by {item.art.artist}
+          </h2>
+          <h3 className="subtitle is-6 has-text-light">
             ({item.index + 1} of {sculptureList.length})
           </h3>
           <img src={item.art.url} alt={item.art.alt} />
