@@ -3,12 +3,11 @@ import React, { useState, useEffect } from "react";
 function LifeCycleShared() {
   const [count, setCount] = useState(0);
 
-  // useEffect to simulate componentDidMount + componentDidUpdate on `count`
   useEffect(() => {
-    // console.log("Component mounted or count updated:", count);
+    console.log("Component mounted or count updated:", count);
 
     return () => {
-      // console.log("Cleanup before next effect or unmount (count was):", count);
+      console.log("[Cleanup before next effect or unmount] count was:", count);
     };
   }, [count]);
 
@@ -16,49 +15,79 @@ function LifeCycleShared() {
   const decrement = () => setCount((c) => c - 1);
 
   return (
-    <div>
-      <h1>Lifecycle Monitor</h1>
+    <section className="section">
+      <div className="container">
+        <div className="box">
+          <h1 className="title has-text-centered">Lifecycle Monitor</h1>
+          <div className="columns">
+            <div className="column">
+              <CounterDisplay count={count} />
+            </div>
+            <div className="column">
+              <CounterControls
+                count={count}
+                onIncrement={increment}
+                onDecrement={decrement}
+              />
+            </div>
+          </div>
+          <CounterLogger count={count} />
+        </div>
+      </div>
+    </section>
+  );
+}
 
-      {/* Child #1: purely presentational */}
-      <CounterDisplay count={count} />
-
-      {/* Child #2: interacts with the same shared state */}
-      <CounterControls
-        count={count}
-        onIncrement={increment}
-        onDecrement={decrement}
-      />
-
-      {/* Child #3: demonstrates side‑effect listening */}
-      <CounterLogger count={count} />
+function CounterDisplay({ count }) {
+  return (
+    <div className="card">
+      <div className="card-content has-text-centered">
+        <p className="heading">Current Count</p>
+        <p className="title is-1 has-text-primary">{count}</p>
+      </div>
     </div>
   );
 }
 
-// Child #1: reads the shared state
-function CounterDisplay({ count }) {
-  return <p>Count: {count}</p>;
-}
-
-// Child #2: updates the shared state via callbacks from the parent
 function CounterControls({ count, onIncrement, onDecrement }) {
   return (
-    <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-      <button onClick={onDecrement} disabled={count === 0}>
-        -
-      </button>
-      <button onClick={onIncrement}>+</button>
+    <div className="card">
+      <div className="card-content has-text-centered">
+        <p className="title is-5">Controls</p>
+
+        <div className="buttons is-centered">
+          <button
+            className="button is-danger"
+            onClick={onDecrement}
+            disabled={count === 0}
+          >
+            −
+          </button>
+
+          <button className="button is-success" onClick={onIncrement}>
+            +
+          </button>
+        </div>
+
+        <div className="notification is-light mt-4">
+          Shared Count: <strong>{count}</strong>
+        </div>
+      </div>
     </div>
   );
 }
 
-// Child #3: reacts to count changes
 function CounterLogger({ count }) {
   useEffect(() => {
-    // console.log("[CounterLogger] count changed to", count);
+    console.log("[CounterLogger] count changed to", count);
   }, [count]);
 
-  return null; // no UI
+  return (
+    <div className="notification is-info is-light mt-5">
+      <strong>CounterLogger</strong> is listening for state changes. Open the
+      browser console to see the useEffect logs.
+    </div>
+  );
 }
 
 export default LifeCycleShared;

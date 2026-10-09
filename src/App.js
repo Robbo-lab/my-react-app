@@ -1,9 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
 import ApodPage from "./pages/ApodPage";
 import Accordion from "./components/Accordian";
 import Gallery from "./components/Gallery";
 import GalleryItem from "./components/GalleryItem";
+import LifeCycleShared from "./components/LifeCycleShared.js";
+import LikesComponent from "./components/LikesComponent.js";
 import PeopleList from "./components/PeopleList";
 import StyledComponent from "./components/StyledComponent";
 import UserProfile from "./components/UserProfile";
@@ -60,6 +63,8 @@ const App = () => {
               <Route path="/gallery/:id" element={<GalleryItem />} />
               <Route path="/people" element={<PeopleList />} />
               <Route path="/users" element={<UserProfile user={user} />} />
+              <Route path="/shared-state" element={<LifeCycleShared />} />
+              <Route path="/likes" element={<LikesComponent />} />
             </Routes>
           </div>
         </div>

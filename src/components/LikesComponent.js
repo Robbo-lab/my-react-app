@@ -42,26 +42,34 @@ export default function LikesComponent() {
   return (
     <>
       <section className="section">
-        <div className="container has-text-centered">
+        <div className="container">
           <Header />
-          <div>
-            <ul>
-              {names.map((name) => (
-                <li key={name}>{name}</li>
-              ))}
-            </ul>
-            <button className="button" onClick={handleLikeClick}>
-              Like
-            </button>
-            <button className="button" onClick={handleDisLikeClick}>
-              Dislike
-            </button>
+          <div className="box has-text-centered">
+            <div className="content">
+              <ul>
+                {names.map((name) => (
+                  <li key={name}>
+                    <span className="tag is-primary is-medium">{name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="buttons is-centered mt-4">
+              <button className="button is-success" onClick={handleLikeClick}>
+                Like
+              </button>
+              <button className="button is-danger" onClick={handleDisLikeClick}>
+                Dislike
+              </button>
+            </div>
           </div>
         </div>
       </section>
-      <section className="section">
-        <div className="container has-text-centered">
-          <AlertMessage />
+      <section className="section pt-0">
+        <div className="container">
+          <div className="notification is-info is-light has-text-centered">
+            <AlertMessage />
+          </div>
         </div>
       </section>
     </>
