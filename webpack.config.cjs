@@ -8,7 +8,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     clean: true,
     // For GH Pages
     publicPath: publicUrl,
