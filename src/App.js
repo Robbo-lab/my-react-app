@@ -24,37 +24,94 @@ const App = () => {
       {/* <Router basename="/"> */}
       <section className="hero is-fullheight is-primary">
         <div className="hero-body">
-          <div className="container has-text-centered">
-            <h1 className="title">Our work in a SPA</h1>
-            <h2 className="subtitle">
-              All of our components in a Single Page React App
-            </h2>
-            <Link className="button is-link is-normal m-1" to="/">
-              Home
-            </Link>
-            <Link className="button is-link is-normal m-1" to="/nasa-api">
-              NASA API
-            </Link>
-            <Link className="button is-link is-normal m-1" to="/styled">
-              Styled Component
-            </Link>
-            <Link className="button is-link is-normal m-1" to="/accordion">
-              Accordian
-            </Link>
-            <Link className="button is-link is-normal m-1" to="/gallery">
-              Gallery
-            </Link>
-            <Link className="button is-link is-normal m-1" to="/gallery/1">
-              Gallery Item
-            </Link>
-            <Link className="button is-link is-normal m-1" to="/people">
-              People List
-            </Link>
-            <Link className="button is-link is-normal m-1" to="/users">
-              User Profile
-            </Link>
+          <div className="container">
+            <div className="has-text-centered mb-6">
+              <h1 className="title">Our Work in a SPA</h1>
+              <h2 className="subtitle">
+                All of our components in a Single Page React App
+              </h2>
+            </div>
 
-            {/* Routing Setup */}
+            <div className="columns is-multiline is-centered">
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link className="button is-link is-fullwidth is-medium" to="/">
+                  Home
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/nasa-api"
+                >
+                  NASA API
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/styled"
+                >
+                  Styled Component
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/accordion"
+                >
+                  Accordion
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/gallery"
+                >
+                  Gallery
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/gallery/1"
+                >
+                  Gallery Item
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/people"
+                >
+                  People List
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/users"
+                >
+                  User Profile
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/shared-state"
+                >
+                  Shared State
+                </Link>
+              </div>
+              <div className="column is-12-mobile is-6-tablet is-4-desktop">
+                <Link
+                  className="button is-link is-fullwidth is-medium"
+                  to="/likes"
+                >
+                  State & useEffect
+                </Link>
+              </div>
+            </div>
+
             <Routes>
               <Route path="/nasa-api" element={<ApodPage />} />
               <Route path="/styled" element={<StyledComponent />} />
