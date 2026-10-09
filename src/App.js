@@ -20,8 +20,8 @@ import "./assets/styles.css";
 const App = () => {
   return (
     // Github pages Dev
-    <Router basename="/my-react-app">
-      {/* <Router basename="/"> */}
+    // <Router basename="/my-react-app">
+    <Router basename="/">
       <section className="hero is-fullheight is-primary">
         <div className="hero-body">
           <div className="container">
