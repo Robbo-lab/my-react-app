@@ -1,4 +1,4 @@
-export const properties = [
+const items = [
   {
     id: 1,
     title: "Luxury Apartment with great views",
@@ -60,3 +60,5 @@ export const properties = [
     available: Date.now(),
   },
 ];
+
+export default items;

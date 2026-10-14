@@ -1,58 +1,41 @@
-import { Link, useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import { sculptureList } from "../data/sculptures.js";
+import React from "react";
+import { Link, useParams } from "react-router";
+import sculptureList from "../data/sculptures.js";
 
-const GalleryItem = () => {
-  // get the param from the url
-  // 'http://localhost/gallery/1'
-  // useParams => 1
+export default function GalleryItem() {
   const { id } = useParams();
+  const index = sculptureList.findIndex((item) => String(item.id) === id);
 
-  // create our state gfor the gallery item to show
-  // null default
-  const [item, setItem] = useState(null);
+  if (index === -1) {
+    return (
+      <div className="box mt-3">
+        <p>Sculpture not found.</p>
+        <Link className="button is-link mt-3" to="/gallery">
+          Back to gallery
+        </Link>
+      </div>
+    );
+  }
 
-  // use effect search the sculturelist array for the id taken from the params url
-  useEffect(() => {
-    // serach the scultureList array for the item with the id of 1
-    // in the array find the item with the id of 1
-    const itemIndex = sculptureList.findIndex((item) => {
-      return item.id == id;
-    });
-    let sculpture = sculptureList[itemIndex];
-    let nextSculptureID =
-      sculptureList[(itemIndex + 1) % sculptureList.length].id;
+  const sculpture = sculptureList[index];
+  const next = sculptureList[(index + 1) % sculptureList.length];
 
-    // set state of item to be the individual sculpture
-    setItem({ art: sculpture, next: nextSculptureID, index: itemIndex });
-  }, [id]);
-
-  // render template
   return (
     <div className="box mt-3">
-      {item ? (
-        <>
-          <Link
-            className="button is-info is-normal mb-1"
-            to={`/gallery/${item.next}`}
-          >
-            Next
-          </Link>{" "}
-          m
-          <h2 className="title is-5 has-text-light">
-            <i>{item.art.name}</i> by {item.art.artist}
-          </h2>
-          <h3 className="subtitle is-6 has-text-light">
-            ({item.index + 1} of {sculptureList.length})
-          </h3>
-          <img src={item.art.url} alt={item.art.alt} />
-          <p>{item.art.description}</p>
-        </>
-      ) : (
-        <p> Item not found</p>
-      )}
+      <h2 className="title is-5">
+        <i>{sculpture.name}</i> by {sculpture.artist}
+      </h2>
+      <Link className="button is-info m-1" to={`/gallery/${next.id}`}>
+        Next
+      </Link>
+      <Link className="button is-link m-1" to="/gallery">
+        Gallery
+      </Link>
+      <h3 className="subtitle is-6">
+        {index + 1} of {sculptureList.length}
+      </h3>
+      <img src={sculpture.url} alt={sculpture.alt} />
+      <p>{sculpture.description}</p>
     </div>
   );
-};
-
-export default GalleryItem;
+}

@@ -1,26 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function StyledComponent() {
-    const [looptime, setLoopTime] = React.useState("3000");
-    const animatedSection = {
-        color: "blue",
-        backgroundColor: "lightgray",
-        padding: "10px",
-        bordeRadius: "5px",
-        maxWidth: "100vw",
-        animation: `fadeInScale ${looptime}ms ease-in-out infinite`,
-    };
-    const setLoop = event => {
-        setLoopTime(event.target.value);
-    };
-    return (
-        <section className="box mt-3">
-            <div className="box">
-                <input type="range" className="slider" onChange={setLoop} min={100} max={10000} value={looptime} />
-            </div>
-            <section className="animatedSection box" style={animatedSection}>
-                This is a styled section with animation
-            </section>
-        </section>
-    );
+  const [animationDuration, setAnimationDuration] = useState(0);
+
+  function handleDurationChange() {
+    setAnimationDuration(animationDuration + 1);
+  }
+
+  useEffect(() => {
+    console.log("State changed");
+  }, [animationDuration]);
+
+  return (
+    <>
+      <section
+        className="animatedSection"
+        style={{
+          animation: `fadeInScale ${animationDuration}s ease-in-out infinite`,
+        }}
+      >
+        This is a styled section with animation
+      </section>
+      <button className="button is-primary" onClick={handleDurationChange}>
+        Click
+      </button>
+    </>
+  );
 }

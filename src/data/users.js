@@ -1,23 +1,183 @@
-export const user = {
-  firstName: "John",
-  lastName: "Huxley",
-  age: 30,
-  isStudent: false,
-  address: {
-    street: "123 Main St",
-    city: "Perth",
-    zipCode: "6000",
+// Add user records with id, name, firstName, and age here.
+export const users = [
+  {
+    id: 1,
+    firstName: "Steve",
+    lastName: "Irwin",
+    age: 44,
+    isStudent: false,
+    address: {
+      street: "Australia Zoo",
+      city: "Beerwah",
+      zipCode: "4519",
+    },
+    skills: ["Wildlife", "Conservation", "Television"],
+    socialProfiles: {
+      twitter: "@crikey",
+      linkedIn: "linkedin.com/in/steveirwin",
+    },
+    isEmployed: true,
   },
-  skills: ["JavaScript", "HTML", "CSS"],
-  socialProfiles: {
-    twitter: "@aldus",
-    linkedIn: "linkedin.com/in/ahuxley",
+  {
+    id: 2,
+    firstName: "Cathy",
+    lastName: "Freeman",
+    age: 51,
+    isStudent: false,
+    address: {
+      street: "Olympic Boulevard",
+      city: "Sydney",
+      zipCode: "2000",
+    },
+    skills: ["Athletics", "Sprinting", "Motivation"],
+    socialProfiles: {
+      twitter: "@cathyfreeman",
+      linkedIn: "linkedin.com/in/cathyfreeman",
+    },
+    isEmployed: true,
   },
-  isEmployed: true,
-  changeAge: function () {
-    return (this.age += 1);
+  {
+    id: 3,
+    firstName: "Hugh",
+    lastName: "Jackman",
+    age: 57,
+    isStudent: false,
+    address: {
+      street: "Harbour View Rd",
+      city: "Sydney",
+      zipCode: "2000",
+    },
+    skills: ["Acting", "Singing", "Producing"],
+    socialProfiles: {
+      twitter: "@realhughjackman",
+      linkedIn: "linkedin.com/in/hughjackman",
+    },
+    isEmployed: true,
   },
-  changeArrowAge: () => {
-    this.age += 1;
+  {
+    id: 4,
+    firstName: "Nicole",
+    lastName: "Kidman",
+    age: 59,
+    isStudent: false,
+    address: {
+      street: "Beachfront Ave",
+      city: "Sydney",
+      zipCode: "2000",
+    },
+    skills: ["Acting", "Film", "Producing"],
+    socialProfiles: {
+      twitter: "@nicolekidman",
+      linkedIn: "linkedin.com/in/nicolekidman",
+    },
+    isEmployed: true,
   },
-};
+  {
+    id: 5,
+    firstName: "Don",
+    lastName: "Bradman",
+    age: 92,
+    isStudent: false,
+    address: {
+      street: "Cricket Ground Rd",
+      city: "Adelaide",
+      zipCode: "5000",
+    },
+    skills: ["Cricket", "Leadership", "Strategy"],
+    socialProfiles: {
+      twitter: "@theDon",
+      linkedIn: "linkedin.com/in/donbradman",
+    },
+    isEmployed: false,
+  },
+  {
+    id: 6,
+    firstName: "John",
+    lastName: "Williamson",
+    age: 80,
+    isStudent: false,
+    address: {
+      street: "Country Music Ln",
+      city: "Tamworth",
+      zipCode: "2340",
+    },
+    skills: ["Singing", "Songwriting", "Guitar"],
+    socialProfiles: {
+      twitter: "@johnwillo",
+      linkedIn: "linkedin.com/in/johnwilliamson",
+    },
+    isEmployed: true,
+  },
+  {
+    id: 7,
+    firstName: "Ash",
+    lastName: "Barty",
+    age: 30,
+    isStudent: false,
+    address: {
+      street: "Centre Court Dr",
+      city: "Brisbane",
+      zipCode: "4000",
+    },
+    skills: ["Tennis", "Golf", "Resilience"],
+    socialProfiles: {
+      twitter: "@ashbarty",
+      linkedIn: "linkedin.com/in/ashbarty",
+    },
+    isEmployed: true,
+  },
+  {
+    id: 8,
+    firstName: "Margot",
+    lastName: "Robbie",
+    age: 36,
+    isStudent: false,
+    address: {
+      street: "Movie Star Way",
+      city: "Gold Coast",
+      zipCode: "4217",
+    },
+    skills: ["Acting", "Producing", "Film"],
+    socialProfiles: {
+      twitter: "@margotrobbie",
+      linkedIn: "linkedin.com/in/margotrobbie",
+    },
+    isEmployed: true,
+  },
+  {
+    id: 9,
+    firstName: "Adam",
+    lastName: "Goodes",
+    age: 46,
+    isStudent: false,
+    address: {
+      street: "SCG Road",
+      city: "Sydney",
+      zipCode: "2000",
+    },
+    skills: ["AFL", "Leadership", "Advocacy"],
+    socialProfiles: {
+      twitter: "@adamgoodes",
+      linkedIn: "linkedin.com/in/adamgoodes",
+    },
+    isEmployed: true,
+  },
+  {
+    id: 10,
+    firstName: "Bindi",
+    lastName: "Irwin",
+    age: 28,
+    isStudent: false,
+    address: {
+      street: "Australia Zoo",
+      city: "Beerwah",
+      zipCode: "4519",
+    },
+    skills: ["Wildlife", "Conservation", "Television"],
+    socialProfiles: {
+      twitter: "@bindiirwin",
+      linkedIn: "linkedin.com/in/bindiirwin",
+    },
+    isEmployed: true,
+  },
+];
